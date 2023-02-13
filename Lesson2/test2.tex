@@ -1,0 +1,109 @@
+\documentclass{article}
+% preamble
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{blindtext}
+%\usepackage{anysize}
+%\marginsize{1cm}{5pt}{1in}{3pc}
+\usepackage{geometry}
+%\geometry{height=10in,hmargin={3cm,0.8in}} %aSpaper not recognized
+\geometry{hmargin={3cm,0.8in}, left=20mm, top=20mm}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\chead{(\thepage)}
+\usepackage{graphicx}
+\usepackage[normalem]{ulem}
+\usepackage{listings}
+
+\begin{document}
+    \section{Picks, tables and list}
+    % body of the document
+    $$New Line$$
+    %fuck
+    Hello \LaTeX!
+
+    \begin{itemize}
+        \item Bulleted
+        \item list
+    \end{itemize}
+
+    \begin{enumerate}
+        \item Numbered
+        \begin{enumerate}
+            \item Numbered
+            \item list
+        \end{enumerate}
+        \item list
+    \end{enumerate}
+
+    \begin{table}[bt]
+        \caption{Table caption}
+        \begin{center}
+            \begin{tabular}{|l||cr|}
+                \hline
+                Left& center & right\\  
+                    L&C&R
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    \begin{figure}[t]
+        \caption{StuDev}
+        \includegraphics[width=0.3\textwidth]{bottom.png}
+        \caption{StuDev GAAAAAAAAAAAY}
+    \end{figure}
+
+    {\bfseries
+    \section{Fonts, characters}
+    \textit{Italic characters}\\
+    \textbf{Bold fonts}\\
+    \textsc{Small characters}\\}
+    \texttt{Typewriter fonts}\\
+    {\bfseries Argument} outside
+
+    {\large larger than usual}\\
+    {\Large Enven Larger}\\
+    {\LARGE Much Larger}\\
+    {\huge Huge}\\
+    {\Huge Enormous}
+
+    \textbf{\textit{Bold and italic}}\\
+    \emph{Emphasizing an expression}\\
+    {\em Declaration for emphasizing a text}
+
+    \underline{Underlined text}\\
+    \MakeUppercase{some text}\\
+    \MakeLowercase{some other text}
+
+    \bfseries We use bold characters,
+    \textnormal{normal fornt typeset here,} but the rest is still bold \\
+    \normalfont and normal font typeset here.
+
+    \uline{underlined text}\\
+    \uuline{2underlined text}\\
+    \uwave{3underlined text}\\
+    \sout{striked out text}\\
+    \xout{text with a line through it}
+
+    \verb!This is a verbatism text!
+
+    \verb*|asd asd asd|
+
+    \begin{verbatim}
+This is a verbatim text
+    \end{verbatim}
+
+Text \lstinline!A=zeros(N,1);! text
+
+    \begin{lstlisting}[language=Matlab,numbers=left,firstnumber=25]
+A=zeros(N,1);
+% Comment
+for i=1:N
+    A(i)=i;
+end
+    \end{lstlisting}
+
+    \section{FUCK}
+
+\end{document}
