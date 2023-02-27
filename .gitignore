@@ -6,3 +6,4 @@ studev_logo.png
 *.log
 *.synctex.gz
 *.synctex(busy)
+*.toc

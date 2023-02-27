@@ -1,0 +1,62 @@
+\section{Lists}
+\subsection{Bulleted list}
+\renewcommand{\theenumi}{\Alph{enumi}}
+\renewcommand{\labelenumi}{\theenumi.)}
+\begin{enumerate}[EX I.]
+    %\item[(*)] fruit
+    \item fruit
+        \begin{enumerate}[{example} a)]
+            \item apples
+                \begin{enumerate}
+                    \item seed
+                    \item skin
+                    \item color
+                        \begin{enumerate}
+                            \item red
+                            \item green
+                        \end{enumerate}
+                \end{enumerate}
+            \item[\fbox{!!!}] pear
+        \end{enumerate}
+    \item vegetables
+        \begin{enumerate}
+            \item potatoes
+            \item carrots
+        \end{enumerate}
+    \item tomatoes
+\end{enumerate}
+
+\theenumi
+
+% enumi, enumii, enumiii, enumiv
+% labelenumi,..., labelenumiv
+just some random fuck
+
+\subsection{Descriptive list}
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\itshape #1}
+\begin{description}
+    \item[apple: ] Sweet tasty fruit
+    \item[pear: ] not so tasty \cite{Anything,sw}
+\end{description}
+
+\subsection{General list}
+\begin{list}{$\Leftarrow$}{spacing}
+    \item apple
+    \item pale
+    \item Ale
+    \item Eel
+\end{list}
+
+\newcounter{countlist}
+\begin{list}{\Alph{countlist}}{\usecounter{countlist}}
+    \item Pear
+    \item Apple
+    \item Eel
+\end{list}
+
+\newcommand{\bibart}[6]{\textsc{#1}: \textit{#2}. #3, \textbf{#4}, #5 (#6)}
+\subsection{bibliographies}
+\begin{thebibliography}{ABCD}
+    \bibitem[MyId]{Anything} \bibart{Whoever}{Title}{Journal}{volume}{page}{Year}
+    \bibitem{sw} Steve Wonder: Visual arts. Editors of chief, 20166.
+\end{thebibliography}
