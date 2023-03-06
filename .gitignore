@@ -8,3 +8,5 @@ studev_logo.png
 *.synctex(busy)
 *.toc
 *.ent
+*.bbl
+*.blg
