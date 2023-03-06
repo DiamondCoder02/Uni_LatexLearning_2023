@@ -1,0 +1,39 @@
+\documentclass[a4paper]{article}
+% \documentclass[a4paper,12pt,twoside,twocolumn,landscape]{article}
+\usepackage{enumerate}
+\usepackage{blindtext}
+\usepackage{endnotes}
+%\usepackage{anysize}
+%\marginsize{1cm}{2cm}{3cm}{4cm}
+% \usepackage{geometry}
+% \geometry{height=10in, a5paper,hmargin={3cm,0.8in}}
+
+\begin{document}
+\bibliographystyle{abbrv}
+
+    \begin{enumerate}[EX I.]
+        %\item[(*)] fruit
+        \item fruit
+            \begin{enumerate}[{example} a)]
+                \item apples\cite{MyId}
+                \item[\fbox{!!!}] pear
+            \end{enumerate}
+        \item vegetables
+            \begin{enumerate}
+                \item potatoes
+                \item carrots
+            \end{enumerate}
+        \item tomatoes
+    \end{enumerate}
+
+    \pagebreak
+
+    \input{notes.tex}
+    \renewcommand{\notesname}{The name of the notes XD}
+    \theendnotes
+
+    \input{fuckMath.tex}
+
+
+\end{document}
+\bibliography{mybib}
