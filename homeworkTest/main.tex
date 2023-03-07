@@ -22,7 +22,7 @@
 \usepackage{enumerate} % Meth or math
 \usepackage{graphicx} % Insert images
 \usepackage{geometry} 
-\geometry{left=19mm, top=15mm, right=19mm, bottom=20mm} % Set the margins
+\geometry{left=20mm, top=15mm, right=20mm, bottom=20mm} % Set the margins
 
 \title{\textbf{A Vision-Based Algorithm for a Path Following Problem}}
 \author{Mario Terlizzi$^{1}$, Giuseppe Silano$^{2}$, Luigi Russo$^{1}$, Muhammad Aatif$^{1}$,\\
@@ -45,33 +45,33 @@ Amin Basiri$^{1}$, Valerio Mariani$^{1}$, Luigi Iannelli$^{1}$, and Luigi Glielm
     % \label{sec:introduct}
 
     Path following is a relevant application problem within the Unmanned Aerial Vehicle (UAV) field. For instance, in precision agriculture scenarios having good path following algorithms is a fundamental requirement 
-    to preserve high productivity rates and plant growth~\cite{1_basso2019uav}. In civilian applications, monitoring of power lines can be encoded as a path following problem between several target regions that need to be inspected~\cite{Silano2021ICRARAL}. Whatever the field of application is, drones have to follow a path to accomplish the mission specifications safely and successfully. 
+    to preserve high productivity rates and plant growth~\cite{bibItem1}. In civilian applications, monitoring of power lines can be encoded as a path following problem between several target regions that need to be inspected~\cite{bibItem2}. Whatever the field of application is, drones have to follow a path to accomplish the mission specifications safely and successfully. 
 
     Looking at the path following problem, it can be divided into two parts: 
-    \textit{detection} and \textit{path following}~\cite{Dahroug2018MARSS, Rafique2020TAES}. 
-    As regards the \textit{path detection}, Hough transform~\cite{5_duda1972use} and its further 
-    developments~\cite{6_duan2010improved, Du2010TIMP} are considered the most valuable solutions in the literature to cope with the task. However, such a transformation demands a high computational effort making it hard to run on-board the aircraft when battery and processing constraints are tight. These requirements are increasingly stringent when considering  Micro Aerial Vehicles (MAVs), where the sensor equipment and the vehicle dimensions are minimal. On the other hand, when the computational burden is at minimum, e.g., lightweight machine learning solutions have been recently proposed to tackle 
-    the problem~\cite{7_van2019ls, Tang2021PR}, the time required to set up the algorithms makes them difficult to apply in real world applications. For all such reasons, it is of interest to have low computational intensity algorithms, possibly without any prior knowledge of the surrounding environment, able to provide references to the \textit{path following} in a given time window.
+    \textit{detection} and \textit{path following}~\cite{bibItem3, bibItem4}. 
+    As regards the \textit{path detection}, Hough transform~\cite{bibItem5} and its further 
+    developments~\cite{bibItem6, bibItem7} are considered the most valuable solutions in the literature to cope with the task. However, such a transformation demands a high computational effort making it hard to run on-board the aircraft when battery and processing constraints are tight. These requirements are increasingly stringent when considering  Micro Aerial Vehicles (MAVs), where the sensor equipment and the vehicle dimensions are minimal. On the other hand, when the computational burden is at minimum, e.g., lightweight machine learning solutions have been recently proposed to tackle 
+    the problem~\cite{bibItem8, bibItem9}, the time required to set up the algorithms makes them difficult to apply in real world applications. For all such reasons, it is of interest to have low computational intensity algorithms, possibly without any prior knowledge of the surrounding environment, able to provide references to the \textit{path following} in a given time window.
 
     \begin{figure}
         \centering
         \includegraphics[width=0.3\textwidth]{pics/fig1_drone.jpg}
-        \caption{Parrot Mambo quad-rotor~\cite{15_Mathworks_url}.}
+        \caption{Parrot Mambo quad-rotor~\cite{bibItem18}.}
         \label{fig:fig1Drone}
     \end{figure}
 
     Moving at the \textit{path following} level, much of the state-of-the-art 
-    solutions~\cite{8_sujit2013evaluation, 12_pelizer2017comparison} rely on the use of nonlinear guidance law~\cite{Keshmiri2018ICUAS}, vector field~\cite{Tuttle2021ARC}, and pure 
-    pursuit~\cite{Baqir2020IOP} algorithms due to their simple implementation and ease of use. Although the choice of path planner is application sensitive, general considerations can be provided. The performance of nonlinear guidance law degrades as the target acceleration changes rapidly introducing a not negligible delay in the trajectory generation. An adequate knowledge of the 
-    target velocity and acceleration is required to avoid instability issues~\cite{Keshmiri2018ICUAS}. On the other hand, a vector field solution prevents from such oscillations problems, but it is 
-    inherently characterized by a high computational effort~\cite{Tuttle2021ARC}. Besides, a pure pursuit approach is a suitable solution when tracking error and computational effort are critical. The position of a look-ahead point is set up at the beginning of the mission, and then updated at 
-    each step following some tracking criteria~\cite{Gautam2015ICUAS, 10_xavier2019path, Silano2019SMC}. The objective is to reduce the distance between the current position and the look-ahead position.
+    solutions~\cite{bibItem10, bibItem11} rely on the use of nonlinear guidance law~\cite{bibItem12}, vector field~\cite{bibItem13}, and pure 
+    pursuit~\cite{bibItem14} algorithms due to their simple implementation and ease of use. Although the choice of path planner is application sensitive, general considerations can be provided. The performance of nonlinear guidance law degrades as the target acceleration changes rapidly introducing a not negligible delay in the trajectory generation. An adequate knowledge of the 
+    target velocity and acceleration is required to avoid instability issues~\cite{bibItem12}. On the other hand, a vector field solution prevents from such oscillations problems, but it is 
+    inherently characterized by a high computational effort~\cite{bibItem13}. Besides, a pure pursuit approach is a suitable solution when tracking error and computational effort are critical. The position of a look-ahead point is set up at the beginning of the mission, and then updated at 
+    each step following some tracking criteria~\cite{bibItem15, bibItem16, bibItem17}. The objective is to reduce the distance between the current position and the look-ahead position.
 
     In this paper, we propose a novel winner-prize algorithm designed to deal with the path following problem in the context of the IFAC2020 MathWorks Minidrone 
-    competition~\cite{4_Mathworks_url}. The framework combines the advantages provided by the pure pursuit algorithm and some simple image processing to detect and to track a pre-established path. The lightweight and ease of implementation of the proposed solution allow the deployment on low computational 
-    capacity MAVs, such as the Parrot Mambo~\cite{15_Mathworks_url} (see, Figure~\ref{fig:fig1Drone}) considered as a testbed for the application. Numerical simulations 
-    carried out in MATLAB together with the MathWorks Virtual Reality (VR) toolbox~\cite{SilanoMATFly} show the validity and the effectiveness of the proposed approach. Moreover, the code is provided as 
-    open-source~\cite{GitHubCode} making it possible to go through any part of system and to replicate the obtained results. 
+    competition~\cite{bibItem19}. The framework combines the advantages provided by the pure pursuit algorithm and some simple image processing to detect and to track a pre-established path. The lightweight and ease of implementation of the proposed solution allow the deployment on low computational 
+    capacity MAVs, such as the Parrot Mambo~\cite{bibItem18} (see, Figure~\ref{fig:fig1Drone}) considered as a testbed for the application. Numerical simulations 
+    carried out in MATLAB together with the MathWorks Virtual Reality (VR) toolbox~\cite{bibItem20} show the validity and the effectiveness of the proposed approach. Moreover, the code is provided as 
+    open-source~\cite{bibItem21} making it possible to go through any part of system and to replicate the obtained results. 
 
     The paper is organized as follows. Section~\ref{sec:probDesc} presents the problem, while in Sec.~\ref{sec:VisBasedFollow} the vision-based path following algorithm is 
     described. Numerical simulations are reported in Sec.~\ref{sec:NumRes}. Finally, conclusions are drawn in Sec.~\ref{sec:conclu}. 
@@ -79,7 +79,7 @@ Amin Basiri$^{1}$, Valerio Mariani$^{1}$, Luigi Iannelli$^{1}$, and Luigi Glielm
     \section{Problem Description}
     \label{sec:probDesc}
 
-    The work presented here finds an application within the IFAC2020 MathWorks Minidrone competition~\cite{4_Mathworks_url}, where the use of a model-based design approach is the aim of the specific contest. Path error and mission time are used as evaluation metrics for the algorithm. The whole process is the following: a quad-rotor UAV follows a pre-established red path by using its downward facing camera to get feedback from the environment. Images are updated according to the position and orientation of the vehicle simulated in the MATLAB VR world. No prior knowledge on the path and the surrounding scenario is given. The drone takes off and starts its  motion looking at the path, and the mission stops with the recognition of an end-marker. At that time, the drone lands staying within the delimited area. 
+    The work presented here finds an application within the IFAC2020 MathWorks Minidrone competition~\cite{bibItem19}, where the use of a model-based design approach is the aim of the specific contest. Path error and mission time are used as evaluation metrics for the algorithm. The whole process is the following: a quad-rotor UAV follows a pre-established red path by using its downward facing camera to get feedback from the environment. Images are updated according to the position and orientation of the vehicle simulated in the MATLAB VR world. No prior knowledge on the path and the surrounding scenario is given. The drone takes off and starts its  motion looking at the path, and the mission stops with the recognition of an end-marker. At that time, the drone lands staying within the delimited area. 
     Figure~\ref{fig:fig2track} shows the considered scenario. 
 
     \begin{figure}
@@ -92,10 +92,10 @@ Amin Basiri$^{1}$, Valerio Mariani$^{1}$, Luigi Iannelli$^{1}$, and Luigi Glielm
     \section{Vision-Based Path Following Algorithm}
     \label{sec:VisBasedFollow}
 
-    The vision-based path following algorithm combines the advantages offered by the pure pursuit algorithm~\cite{14_coulter1992implementation} with that of an easy image processing system to cope with the task. The algorithm starts selecting a target position ahead of the vehicle and that has to be reached, typically on a path. The framework is based on the following operations: (i) given 
+    The vision-based path following algorithm combines the advantages offered by the pure pursuit algorithm~\cite{bibItem22} with that of an easy image processing system to cope with the task. The algorithm starts selecting a target position ahead of the vehicle and that has to be reached, typically on a path. The framework is based on the following operations: (i) given 
     the actual position $\mathbf{d}=(x_d, y_d)^\top \in \mathbb{R}^2$ where the UAV is located, 
     a Virtual Target Point (VTP)  is set over the track at $\mathbf{w}=(x_w, y_w)^\top \in \mathbb{R}^2$; then, (ii) the quad-rotor is commanded to reach the VTP along a straight line (essentially it is the pure 
-    pursuit algorithm with a curvature of infinite radius)~\cite{14_coulter1992implementation}, i.e., 
+    pursuit algorithm with a curvature of infinite radius)~\cite{bibItem22}, i.e., 
     moving the vehicle from its current position to the goal position\footnote{The quad-rotor is assumed to fly at a fixed height along the entire mission.}. 
     In Figure~\ref{fig:fig3path} an illustrative example of how the algorithm works is depicted. 
 
@@ -123,7 +123,7 @@ Amin Basiri$^{1}$, Valerio Mariani$^{1}$, Luigi Iannelli$^{1}$, and Luigi Glielm
 
     In Figure~\ref{fig:fig4diagram} the whole control scheme architecture is reported. The algorithm is mainly divided into two parts: (i) the Image Processing System (IPS) deals with extracting the red path from the 
     camera images, providing the errors along the $x$- and $y$-axis of the camera frame between the current drone position and the VTP point, and recognizing the End-Marker for the landing operations; while, (ii) the Path Planner (PP) figures out the path following problem by computing the new 
-    position $\mathbf{w}$ of the drone in the world frame\cite[Sec.~V]{SilanoMATFly} implementing 
+    position $\mathbf{w}$ of the drone in the world frame\cite[Sec.~V]{bibItem20} implementing 
     an Image-Based Visual Servoing (IBVS) scheme. The control algorithm computes the commands $u_T$, $u_\varphi$, $u_\vartheta$, and $u_\psi$ that should be given to the drone in order to update its position and orientation in accordance to the PP references. 
 
     The overall mission is divided into four parts: \textit{Take off}, \textit{Following}, \textit{End-Marker}, and \textit{Landing}. A decision-making process has been implemented to  achieve the competition objectives triggering the system from a state to another, as depicted in 
@@ -215,7 +215,7 @@ Amin Basiri$^{1}$, Valerio Mariani$^{1}$, Luigi Iannelli$^{1}$, and Luigi Glielm
     The Path Planner is designed to compute the position of the VTP point $\mathbf{w} = (x_w, y_w)^\top$ maintaining a constant altitude ($z_H$) while following the path. Roughly speaking, the PP computes the spatial coordinates $x_w$ and $y_w$ trying to reduce the errors, i.e., $e_x$ and $e_y$, between the drone position and the VTP. These values are later used by the drone controller to tune the command signals $u_T$, $u_\varphi$, $u_\vartheta$, and $u_\psi$, as 
     described in Figure~\ref{fig:fig4diagram}. The proposed path planner is based on Proportial-Integra control loops. As a common rule in cascade structure, the inner loop, i.e., the PP, is regulated at a 
     rate faster than the outer loop, i.e., the IPS. In our case, the PP runs at 200 Hz ($T_\mathrm{PP} = 5X10^{-3}$s) while the IPS runs at 2 Hz ($T_\mathrm{IPS} = 0.2$s). These are a standard solution in the 
-    literature for quad-rotors control design~\cite{Dief2015}.
+    literature for quad-rotors control design~\cite{bibItem23}.
     \begin{figure}
         \centering
         \includegraphics{pics/fig7_no.png}
@@ -253,11 +253,15 @@ Amin Basiri$^{1}$, Valerio Mariani$^{1}$, Luigi Iannelli$^{1}$, and Luigi Glielm
     \label{sec:NumRes}
 
     To demonstrate the validity and effectiveness of the proposed framework, numerical simulations have been carried out by using the 2019b release of MATLAB equipped with MathWorks Virtual Reality 
-    toolbox~\cite{16_Mathworks_url} and Parrot support package for Simulink~\cite{15_Mathworks_url}. 
-    The video available at~\cite{YouTubeVideo} illustrates in a direct way how the system works, i.e., the ability of the quad-rotor UAV to follow the pre-established red path and to land on the End-Marker. In addition, the video shows the behavior of the IPS and PP that never lose the path during the entire mission. 
+    toolbox~\cite{bibItem24} and Parrot support package for Simulink~\cite{bibItem18}. 
+    The video available at~\cite{bibItem25} illustrates in a direct way how the system works, i.e., the ability of the quad-rotor UAV to follow the pre-established red path and to land on the End-Marker. In addition, the video shows the behavior of the IPS and PP that never lose the path during the entire mission. 
 
     In Figure~\ref{fig:fig10graphs} a comparison of the system performance by using various values of $\alpha$ is reported. As can be seen from the plots, the larger $\alpha$ is, the lower the mission time ($T_s$) is. On the other hand, the lower the mission time is, the greater the path 
     error is. Looking at the zoom plot (see, Figure~\ref{fig:fig10graphs}) it is even clearer how the system performance degrades with increasing $\alpha$ value, and these are all the more evident as the path is angular. For the considered scenario, an heuristic approach was used to tune the $\alpha$ and $\beta$ parameter values.
+
+    Figure~\ref{fig:fig11graph} depicts the drone velocity $v_x$ and $v_y$ along the $x$- and $y$-axis, respectively, and the norm of the drone velocity $v_D$. As described in 
+    Sec.~\ref{sec:pathPlan} and detailed in Appendix~\ref{append}, the norm of the drone velocity remains approximately constant while following the path. The presence of spikes might be due to the coupling effects of the drone $xy$ dynamics even though $x_w$ and $y_w$ references have not been 
+    modified yet (see, Figure~\ref{fig:fig10graphs}). Such coupling effects are probably caused by the asymmetric positioning of the rotors with respect to the principal axis and the effect of the discrete image pixelization. 
 
     \begin{algorithm}
         \caption{Path Planner}
@@ -307,13 +311,12 @@ Amin Basiri$^{1}$, Valerio Mariani$^{1}$, Luigi Iannelli$^{1}$, and Luigi Glielm
         \end{tabular}
     \end{table}
 
-    Figure~\ref{fig:fig11graph} depicts the drone velocity $v_x$ and $v_y$ along the $x$- and $y$-axis, respectively, and the norm of the drone velocity $v_D$. As described in 
-    Sec.~\ref{sec:pathPlan} and detailed in Appendix~\ref{append}, the norm of the drone velocity remains approximately constant while following the path. The presence of spikes might be due to the coupling effects of the drone $xy$ dynamics even though $x_w$ and $y_w$ references have not been 
-    modified yet (see, Figure~\ref{fig:fig10graphs}). Such coupling effects are probably caused by the asymmetric positioning of the rotors with respect to the principal axis and the effect of the discrete image pixelization. 
-
     \section{Conclusion}
     \label{sec:conclu}
-    In this paper, a prize-winner algorithm designed for a path following problem within the IFAC2020 Mathworks Minidrone Competition has been presented. In particular, a lightweight and easy of implementation solution was set to generate the spatial coordinates of the VTP point to fulfill the competition requirements successfully. Numerical simulations carried out in MATLAB together with the MathWorks Virtual Reality toolbox and the Parrot support package for Simulink demonstrated the validity and the effectiveness of the proposed approach. The software has been released as open-source making it possible to go through any part of the system and to replicate the obtained results. Future work will include the integration of more challenging features, such as obstacle avoidance and 3-D reference generation, and lead to field experiments. Furthermore, the effects of the drone dynamics on the performance of the vision-based system will be also explored. 
+    In this paper, a prize-winner algorithm designed for a path following problem within the IFAC2020 Mathworks Minidrone Competition has been presented. In particular, a lightweight and easy of implementation solution was set to generate the spatial coordinates of the VTP point to fulfill the competition requirements successfully. Numerical simulations carried out in MATLAB together with the MathWorks Virtual Reality toolbox and the Parrot support package for Simulink demonstrated the validity and the effectiveness of the proposed approach. 
+
+    The software has been released as open-source making it possible to go through any part of the system and to replicate the obtained results. Future work will include the integration of more challenging features, such as obstacle avoidance and 3-D reference generation, and lead to field experiments. Furthermore, the effects of the drone dynamics on the performance of the vision-based system will be also explored. 
+
     \begin{figure}
         \centering
         \includegraphics[width=0.49\textwidth]{pics/fig10_graph.png}
@@ -327,133 +330,134 @@ Amin Basiri$^{1}$, Valerio Mariani$^{1}$, Luigi Iannelli$^{1}$, and Luigi Glielm
         \label{fig:fig11graph}
     \end{figure}
 
+
     \bibliographystyle{abbrv}
     \footnotesize\begin{thebibliography}{10}
-        \bibitem{1_basso2019uav}
+        \bibitem{bibItem1}
         B.~Maik and d.~E. Pignaton, ``{A UAV guidance system using crop row detection
         and line follower algorithms},'' \emph{Journal of Intelligent \& Robotic
         Systems}, pp. 1--17, 2019.
 
-        \bibitem{Silano2021ICRARAL}
+        \bibitem{bibItem2}
         G.~{Silano}, T.~{Baca}, R.~{Penicka}, D.~{Liuzza}, and M.~{Saska}, ``{Power
         Line Inspection Tasks with Multi-Aerial Robot Systems via Signal Temporal
         Logic Specifications},'' \emph{IEEE Robotics and Automation Letters}, vol.~6,
         no.~2, pp. 4169--4176, 2021.
 
-        \bibitem{Dahroug2018MARSS}
+        \bibitem{bibItem3}
         B.~Dahroug, J.-A. Séon, A.~Oulmas, T.~Xu, B.~Tamadazte, N.~Andreff, and
         S.~Régnier, ``{Some Examples of Path Following in Microrobotics},'' in
         \emph{International Conference on Manipulation, Automation and Robotics at
         Small Scales}, 2018, pp. 1--6.
 
-        \bibitem{Rafique2020TAES}
+        \bibitem{bibItem4}
         M.~A. Rafique and A.~F. Lynch, ``{Output-Feedback Image-Based Visual Servoing
         for Multirotor Unmanned Aerial Vehicle Line Following},'' \emph{IEEE
         Transactions on Aerospace and Electronic Systems}, vol.~56, no.~4, pp.
         3182--3196, 2020.
 
-        \bibitem{5_duda1972use}
+        \bibitem{bibItem5}
         R.~O. {Duda} and P.~E. {Hart}, ``{Use of the Hough transformation to detect
-        lines and curves in pictures},'' \emph{{Communications of the ACM}}, vol.~15,
+        lines and curves in pictures},'' \emph{Communications of the ACM}, vol.~15,
         no.~1, pp. 11--15, 1972.
 
-        \bibitem{6_duan2010improved}
+        \bibitem{bibItem6}
         D.~Dagao, X.~Meng, M.~Qian, H.~Zhongming, and W.~Yueliang, ``{An improved Hough
         transform for line detection},'' in \emph{2010 International Conference on
         Computer Application and System Modeling}, vol.~2, 2010, pp. V2--354.
 
-        \bibitem{Du2010TIMP}
+        \bibitem{bibItem7}
         S.~{Du}, B.~J. {van Wyk}, C.~{Tu}, and X.~{Zhang}, ``{An Improved Hough
         Transform Neighborhood Map for Straight Line Segments},'' \emph{IEEE
         Transactions on Image Processing}, vol.~19, no.~3, pp. 573--585, 2010.
 
-        \bibitem{7_van2019ls}
+        \bibitem{bibItem8}
         V.~Nhan, J.~Robert, and R.~Davide, ``{LS-Net: Fast Single-Shot Line-Segment
         Detector},'' \emph{Machine Vision and Applications}, vol.~12, no.~32, 2020.
 
-        \bibitem{Tang2021PR}
+        \bibitem{bibItem9}
         J.~{Tang}, S.~{Li}, and P.~{Liu}, ``{A review of lane detection methods based
         on deep learning},'' \emph{Patter Recognition}, vol. 111, pp. 1--15, 2021.
 
-        \bibitem{8_sujit2013evaluation}
+        \bibitem{bibItem10}
         P.~{Sujit}, S.~{Saripalli}, and J.~B. {Sousa}, ``{An evaluation of UAV path
         following algorithms},'' in \emph{2013 European Control Conference}, 2013,
         pp. 3332--3337.
 
-        \bibitem{12_pelizer2017comparison}
+        \bibitem{bibItem11}
         G.~V. {Pelizer}, N.~B. {Da Silva}, and K.~R. {Branco}, ``{Comparison of 3d
         path-following algorithms for unmanned aerial vehicles},'' in \emph{2017
         International Conference on Unmanned Aircraft Systems}, 2017, pp. 498--505.
 
-        \bibitem{Keshmiri2018ICUAS}
+        \bibitem{bibItem12}
         S.~{Keshmiri}, A.~R. {Kim}, D.~{Shukla}, A.~{Blevins}, and M.~{Ewing},
         ``{Flight Test Validation of Collision and Obstacle Avoidance in Fixed-Wing
         UASs with High Speeds Using Morphing Potential Field},'' in \emph{2018
         International Conference on Unmanned Aircraft Systems}, 2018, pp. 589--598.
 
-        \bibitem{Tuttle2021ARC}
+        \bibitem{bibItem13}
         T.~{Tuttle}, T.~T. {Moleski}, and J.~{Wilhelm}, ``{Multi-Rotor Path-following
         Performance using Vector Field Guidance and Velocity Control},'' in
         \emph{AIAA Scitech 2021 Forum}, 2021.
 
-        \bibitem{Baqir2020IOP}
+        \bibitem{bibItem14}
         A.~S. {Baqir} and A.~A. {Ammar}, ``{Navigation of Mini Unmanned Aerial Vehicle
         in Unknown Environment},'' \emph{IOP Conference Series: Materials Science and
         Engineering}, vol. 745, 2020.
 
-        \bibitem{Gautam2015ICUAS}
+        \bibitem{bibItem15}
         A.~{Gautam}, P.~B. {Sujit}, and S.~{Saripalli}, ``{Application of guidance laws
         to quadrotor landing},'' in \emph{2015 International Conference on Unmanned
         Aircraft Systems}, 2015, pp. 372--379.
 
-        \bibitem{10_xavier2019path}
+        \bibitem{bibItem16}
         D.~M. {Xavier}, B.~F.~S. {Natassya}, and R.~{Branco Kalinka}, ``{Path-following
         algorithms comparison using Software-in-the-Loop simulations for UAVs},'' in
         \emph{2019 IEEE Symposium on Computers and Communications}, 2019, pp.
         1216--1221.
 
-        \bibitem{Silano2019SMC}
+        \bibitem{bibItem17}
         G.~{Silano}, P.~{Oppido}, and L.~{Iannelli}, ``{Software-in-the-loop simulation
         for improving flight control system design: a quadrotor case study},'' in
         \emph{IEEE International Conference on Systems, Man and Cybernetics}, 2019,
         pp. 466--471.
 
-        \bibitem{15_Mathworks_url}
+        \bibitem{bibItem18}
         {MathWorks}, ``{Simulink Support Package for Parrot Minidrones}.'' [Online].
         Available:
         \url{https://www.mathworks.com/matlabcentral/fileexchange/63318-simulink-support-package-for-parrot-minidrones}
 
-        \bibitem{4_Mathworks_url}
-        Mathworks, \emph{{Mathworks Minidrone Competition IFAC20}}. [Online].
+        \bibitem{bibItem19}
+        Mathworks, \emph{Mathworks Minidrone Competition IFAC20}. [Online].
         Available:
         \url{https://it.mathworks.com/academia/student-competitions/minidrones/ifac-2020.html}
 
-        \bibitem{SilanoMATFly}
+        \bibitem{bibItem20}
         G.~Silano and L.~Iannelli, ``{MAT-Fly: An Educational Platform for Simulating
         Unmanned Aerial Vehicles Aimed to Detect and Track Moving Objects},''
         \emph{IEEE Access}, vol.~9, pp. 39\,333--39\,343, 2021.
 
-        \bibitem{GitHubCode}
+        \bibitem{bibItem21}
         M.~{Terlizzi}, ``{Vision Based Pure Pursuing Algorithm},'' GitHub repository.
         [Online]. Available:
         \url{https://github.com/mar4945/Vision-Based-Pure-Pursuing-Algorithm}
 
-        \bibitem{14_coulter1992implementation}
+        \bibitem{bibItem22}
         R.~C. {Coulter}, ``{Implementation of the pure pursuit path tracking
         algorithm},'' {Carnegie-Mellon UNIV Pittsburgh PA Robotics INST}, Tech. Rep.,
         1992. [Online]. Available:
         \url{http://www.enseignement.polytechnique.fr/profs/informatique/Eric.Goubault/MRIS/coulter_r_craig_1992_1.pdf}
 
-        \bibitem{Dief2015}
+        \bibitem{bibItem23}
         T.~N. Dief and S.~Yoshida, ``{Review: Modeling and Classical Controller Of
         Quad-rotor},'' \emph{International Journal of Computer Science and
         Information Technology \& Security}, vol.~5, no.~4, pp. 314--319, 2015.
 
-        \bibitem{16_Mathworks_url}
+        \bibitem{bibItem24}
         {MathWorks}, ``{Simulink 3D Animation toolbox}.'' [Online]. Available:
         \url{https://www.mathworks.com/products/3d-animation.html}
 
-        \bibitem{YouTubeVideo}
+        \bibitem{bibItem25}
         M.~{Terlizzi}, ``{MATLAB Minidrone Competition IFAC20},'' YouTube. [Online].
         Available: \url{https://youtu.be/9VySp0j-1hc}
     \end{thebibliography}
