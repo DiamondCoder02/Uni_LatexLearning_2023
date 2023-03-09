@@ -21,8 +21,11 @@
 
 \usepackage{enumerate} % Meth or math
 \usepackage{graphicx} % Insert images
-\usepackage{geometry} 
+\usepackage{geometry}
 \geometry{left=20mm, top=15mm, right=20mm, bottom=20mm} % Set the margins
+
+\usepackage{secdot} % https://superuser.com/questions/811779/how-to-add-a-dot-for-section-subsection-numbering-in-tex
+\sectiondot{subsection}
 
 \title{\textbf{A Vision-Based Algorithm for a Path Following Problem}}
 \author{Mario Terlizzi$^{1}$, Giuseppe Silano$^{2}$, Luigi Russo$^{1}$, Muhammad Aatif$^{1}$,\\
@@ -34,6 +37,12 @@ Amin Basiri$^{1}$, Valerio Mariani$^{1}$, Luigi Iannelli$^{1}$, and Luigi Glielm
 }
 \date{}
 
+\usepackage{titlesec} % https://tex.stackexchange.com/questions/108684/spacing-before-and-after-section-titles
+\titlespacing{\section}{0pt}{8pt}{5pt}
+\titleformat{\section}{\fontsize{10}{12}}{\thesection}{1em}{}
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\alph{subsection}}
+
 \begin{document}
 \maketitle
 
@@ -42,7 +51,6 @@ Amin Basiri$^{1}$, Valerio Mariani$^{1}$, Luigi Iannelli$^{1}$, and Luigi Glielm
     \textit{Index Terms} — Path following, UAV, multi-rotor, virtual reality, image processing.}}
 
     \section{Introduction}
-    % \label{sec:introduct}
 
     Path following is a relevant application problem within the Unmanned Aerial Vehicle (UAV) field. For instance, in precision agriculture scenarios having good path following algorithms is a fundamental requirement 
     to preserve high productivity rates and plant growth~\cite{bibItem1}. In civilian applications, monitoring of power lines can be encoded as a path following problem between several target regions that need to be inspected~\cite{bibItem2}. Whatever the field of application is, drones have to follow a path to accomplish the mission specifications safely and successfully. 
