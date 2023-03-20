@@ -1,0 +1,108 @@
+% \documentclass[a4paper,fleqn,leqno]{article}
+\documentclass[a4paper]{article}
+\usepackage{enumerate}
+\usepackage{blindtext}
+
+\usepackage{amsmath}
+\usepackage{array}
+
+\begin{document}
+    \section{Mathematics}
+    \subsection{Inline formulas}
+    Inline formula:
+    $a^2+b^2=\sqrt{c}$. The formula is part of text. Another possibility: 
+    \(\int_a^b\sin(x)dx\). Yet another possibility:
+
+    \subsection{Sub- and superscript}
+    $a_{bc}$, $a\sb{bc}$
+    $a^{bc}$, $a\sp{bc}$
+    $\sideset{_a^b}{_c^d}\prod$
+
+    $a_{\text{Some Text}}$\\
+    $a_{\mbox{Some Text}}$\\
+    $a_{\mathrm{Some Text}}$\\
+    $a_{\textrm{Some Text}}$
+
+    $a b c d e$
+
+    %\FlsingleEq{a^2+b^2=c^2}
+    %\FlsingleEq{a^2+b^2=c^2}
+
+    \subsection{Fractions}
+
+    $\frac{a+b}{c+d}$
+    $$\frac{a+b}{c+d}$$
+    $$\tfrac{a+b}{c+d}$$
+    $\dfrac{a+b}{c+d}$
+
+    \subsection{Binomia}
+
+    $\binom{a+b}{c+d}$
+    $$\binom{a+b}{c+d}$$
+    $$\tbinom{a+b}{c+d}$$
+    $\dbinom{a+b}{c+d}$
+
+    \subsection{General factions}
+    \[
+    \genfrac{\{}{\}}{2mm}{1}{numerator}{denominator}
+    \genfrac{\{}{\}}{1dd}{1}{numerator}{denominator}
+    \genfrac{\{}{\}}{1dd}{0}{numerator}{denominator}
+    \]
+
+    \subsection{Continued fractions}
+    \[
+    \cfrac[1]{1}{1+\cfrac[r]{1}{1+\cfrac{1}{1+\frac{1}{1}}}}
+    \]
+
+    \subsection{Basic objects}
+    \begin{itemize}
+        \item Operators: mathop
+        \item Binary Operators: mathbin
+        \item Relation symbols: mathrel
+        \item Brackets: mathopen, mathclose
+        \item Punctuation symbol: mathpunct
+        \item Parts of formula: mathinner
+    \end{itemize}
+
+    \newcommand{\sgn}{\mathop{\mathrm{sgn}}\nolimits}
+    \newcommand{\trace}{\mathop{\mathrm{Tr}}}
+
+    \begin{eqnarray}
+        \sgn(a\cdot b) &=& \sgn(a)\cdot \sgn(b)\\
+        A&=&\begin{pmatrix}
+            3\times 3
+        \end{pmatrix}\qquad\trace_i(A)=\sum_{i=1}^3 A_{i,j}
+    \end{eqnarray}
+
+    \newcommand{\RO}{\mathrel{\rho}}
+    \newcommand{\bigleft}{\mathopen{\Big(}}
+    \newcommand{\bigright}{\mathopen{\Big)}}
+
+    \[
+    A\RO \bigleft\begin{matrix}
+        a&b\\
+        c&d
+    \end{matrix}\bigright
+    \qquad \leftrightarrow \qquad
+    A\rho (\begin{matrix}
+        a&b\\
+        c&d
+    \end{matrix})
+    \]
+
+    \subsection{Objects below/above each}
+    $f(x)\stackrel{?}{=}g(x)$
+    $$\sum_{\underset{i\neq j}{i=1}}^{\infty}x_i$$
+
+    $f(x)\stackrel{?}{=}g(x)$
+    $$\sum_{\substack{i=1\\i\neq j}}^{\infty}x_i$$
+
+    \subsection{'Over' and 'under' symbols}
+    $\overline{v}$
+    $\underline{v}$
+    $\overbrace{x+y}^{\text{superscript}}$
+
+    \pagebreak
+    \input{tables}
+
+\end{document}
