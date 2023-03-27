@@ -1,0 +1,88 @@
+\section{Tables}
+\subsection{Tabbing text}
+\begin{tabbing}
+    if \= then \= if \= then \= \kill
+    read(value)\\
+    if \> vaule $<$ 0\\
+    \> then \> print(``Are you sure?'')\\
+    The answer is not required.\kill
+    \> else \> if \> value=0\\
+    \>\>\> then \> stop\\
+    \>\> fi\\
+    fi
+\end{tabbing}
+
+\subsection{Basic tables}
+Blah blah || 
+\begin{tabular}[t]{b{3cm}|c!{===}lr}
+    aaa this is a column with a given width & bbb & ccc & ddd\\
+    e & f & \multicolumn{2}{c}{gh}\\
+\end{tabular}
+ || Meow - meow
+
+\begin{tabularx}{\textwidth}{|c|X|c|X|}
+    \hline
+    Centered& a column that can be strecthed to adjust the width of the table&centered& yet another strecthedcolumn\\\hline
+\end{tabularx}
+
+\begin{tabular}{||cc||c|c||}
+    \hhline{|t:==:t:==:t|}
+    a&b&c&d\\
+    \hhline{|:==:|~|~||}
+    e&f&g&h\\
+    \hhline{#==#~|=#}
+    i&j&k&l\\
+    \hhline{||--||--||}
+    m&n&o&p\\
+    \hhline{|b:==:b:==:b|}
+\end{tabular}
+
+{
+\everymath{\displaystyle}
+\[
+\begin{array}{lll}
+    f(x)& \frac{d f(x)}{dx}& \int f(x)dx\\
+    \sin(x)&\frac{d \sin(x)}{dx}=\cos(x) & \int \sin(x)dx=-\cos(x)\\
+\end{array}
+\]
+}
+
+\[
+\begin{vmatrix}
+    1&1&1\\
+    a&b&c\\
+    a^2&b^2&c^2
+\end{vmatrix}
+\qquad
+\begin{pmatrix}
+    1\\
+    1&&\\
+    2&3&4\\
+    &5&6\\
+\end{pmatrix}
+\qquad
+\begin{pmatrix}
+    1&2&\cdots&n\\
+    2&3&\cdots&n+1\\
+    \vdots&\vdots&\ddots&\vdots\\
+    n&n+1&\cdots&2n
+\end{pmatrix}
+\]
+
+\pagebreak
+
+\blindtext
+\begin{table}[p]
+    \centering
+    \caption[Blah-Blah]{Blah-Blah-Blah-Blah-Blah-Blah-Blah-Blah-Blah-Blah-Blah-Blah-Blah-Blah-Blah-Blah-Blah-}
+    \label{tab:my_label}
+    \begin{tabular}{c|c}
+        a&b  \\
+        c&d
+    \end{tabular}
+\end{table}
+\blindtext[3]
+\pagebreak
+\listoftables
+
+here is some text afasdadasasasdfadgdsfgsdfgsfFDSFGSDFG Reference: \ref{tab:my_label} (Only number is displayed)
