@@ -1,0 +1,36 @@
+\documentclass{standalone}
+\usepackage{pst-plot}
+
+\begin{document}
+	\savedata{\mydata}[
+		{
+			{0,0},
+			{1,0.94},
+			{2,1.605},
+			{3,1.424},
+			{4,1.758},
+			{7, 1.454}
+		}
+	]
+
+	%\iffalse
+	%\pspicture{4,3}
+	%\psset{xunit=0.2cm,yunit=1.5cm}
+	%\dataplot[plotstyle=curve,showpoints,dotstyle=triangle]{\mydata}
+	%\psline{<->}(0,2)(0,0)(22,0)
+	%\endpspicture
+	%\if
+
+	%
+	%\begin{psygraph}[axesstyle=frame,xticksize=0 0.1,yticksize=0 0.5, Dx=5,dy=1,Dy=1](0,0)(22,2){10cm}{4cm}
+	%	\listplot[linecolor=red,linewidth=2pt,showpoints=true]{\mydata}
+	%\end{psygraph}
+	%
+
+	\begin{pspicture}[algebraic](-5cm,-1cm)(10,10)
+		\psaxes[->]{10,10}
+		\psplot[linecolor=red,linewidth=2pt]{0}{10}{sqrt(5*x)}
+		\psline(10,10)
+	\end{pspicture}
+
+\end{document}

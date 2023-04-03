@@ -1,0 +1,83 @@
+\documentclass[a4paper]{article}
+\usepackage{enumerate}
+\usepackage{blindtext}
+
+\usepackage{amsmath}
+\usepackage{array}
+
+\usepackage{tabularx}
+\usepackage{hhline}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage[usenames, dvipsnames]{xcolor}
+\definecolor{ugly}{rgb}{0.1,0.3,0.5}
+\definecolor{wolf}{gray}{0.69}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+
+\begin{document}
+
+	\rotatebox{10}{%
+		\resizebox{10cm}{!}{%
+			\reflectbox{%
+				\setlength{\unitlength}{1mm}
+				\fbox{\begin{picture}(50,50)(0,0)
+					\put(10,15){\line(1,1){10}}
+					\put(15,20){\circle{10}}
+					\multiput(20,25)(1,-1){5}{\vector(2,1){5}}
+					\qbezier(10,40)(40,40)(40,10)
+				\end{picture}}
+			}
+		}
+	}
+
+	\pagecolor{wolf}
+	\textcolor{ugly}{FUCK}
+	\reflectbox{Mirrored text}
+	{\color[rgb]{0,1,1}\reflectbox{asdasd}}
+	\rotatebox{30}{Meow}
+	\textcolor{red}{nope}
+	\textcolor{Salmon}{nope}
+	\textcolor{NavyBlue}{pussy}
+	\blindtext[2]
+
+	\setcounter{figure}{25}
+
+	\subsection{Positioning figures}
+	\begin{figure}
+		\centering
+		\includegraphics{VRchat_profile.png}
+		\caption[Description]{A very long description that noone will probably read, I don't even know why I'm writing this, this is just straight up stupidity, but I don't want to stop my inner monologe to something stupid, so I should continue to write this till I get bored. LOL}
+		\label{Fig:nyaaa}
+	\end{figure}
+	\blindtext \fbox{Figure \ref{Fig:nyaaa}}
+
+	\listoffigures
+
+	\pagebreak
+	\blindtext[2]
+	\begin{wrapfigure}[12]{r}[34pt]{5cm}
+		\includegraphics[width=45mm]{VRchat_profile.png}
+	\end{wrapfigure}
+	\blindtext[2]
+
+	\pagebreak
+	\blindtext[2]
+	\begin{wrapfigure}{r}{5cm}
+		\includegraphics[width=45mm]{VRchat_profile.png}
+		\caption{Pic inside text}
+	\end{wrapfigure}
+	\blindtext[2]
+	\pagebreak
+
+	\begin{figure}
+		\centering
+		\subcaptionbox{1st}{
+			\includegraphics[height=75mm]{VRChat_1920x1080_2022-06-17_18-23-48.366.png}
+		}
+		\subcaptionbox{2nd}{\includegraphics[height=50mm]{VRchat_profile.png}}
+		\caption{Two pics}
+		\label{Fig:Vrfucks}
+	\end{figure}
+
+\end{document}
