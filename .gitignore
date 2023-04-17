@@ -19,6 +19,7 @@
 *.lot
 *.lof
 *.nlo
+*.out
 *.synctex.gz
 *.synctex(busy)
 *.toc

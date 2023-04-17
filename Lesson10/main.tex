@@ -1,0 +1,56 @@
+\documentclass[a4paper]{article}
+\usepackage{enumerate}
+\usepackage{blindtext}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{amssymb}
+
+\usepackage{makeidx}
+\makeindex
+
+\usepackage[automake,toc,acronym]{glossaries}
+\makeglossaries
+
+\newglossaryentry{perl}{
+	name=perl,
+	description={Perl is a programming language}
+}
+\newacronym{pdf}{PDF}{Portable Document Format}
+
+\usepackage{nomencl}
+\makenomenclature
+\usepackage{etoolbox}
+\renewcommand{\nomgroup}[1]{\item[\bfseries\ifstrequal{#1}{A}{Physics Constant}{%
+	\ifstrequal{#1}{B}{Number Sets}{
+		\ifstrequal{#1}{C}{Other Symbols}{
+		}
+	}
+}]}
+\newcommand{\nomunit}[1]{\renewcommand{\nomentryend}{\hspace*{\fill#1}}}
+
+\usepackage{hyperref}
+
+\hypersetup{
+	pdfauthor={Nyaaaa},
+	pdftitle={UwU},
+	pdfsubject={OwO},
+	colorlinks=true,
+	linkcolor=blue,
+	citecolor=yellow,
+	urlcolor=green
+}
+
+\begin{document}
+
+Crossreference:
+\hyperlink{gloentry}{A link to a word}
+asd :3
+\input{crossreference}
+
+\printindex
+\printglossary[title= Definitions]
+\printglossary[type=\acronymtype,title=Abbreviations]
+
+\printnomenclature
+
+\end{document}
