@@ -1,0 +1,109 @@
+\documentclass[a4paper]{article}
+\usepackage{enumerate}
+\usepackage{blindtext}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{amssymb}
+
+\usepackage{setspace}
+\usepackage{ifthen}
+
+\RequirePackage{xparse}
+
+\begin{document}
+
+\subsection{Environments}
+\newenvironment{adjustright}{\begin{flushright}\itshape}{$\clubsuit$\end{flushright}}
+
+\begin{adjustright}
+	x3 nuzzles pantsu UwU \dots
+\end{adjustright}
+
+\newsavebox{\poet}
+\newenvironment{poem}[2]{\sbox{\poet}{#1}\begin{verse}\centerline{#2}}{\\\rightline{\usebox{\poet}}\end{verse}}
+
+\begin{poem}{I myself}{My gay poem}
+	Okay, I know this is a really bad idea but\\
+	I'm already here so\\
+	Here we fuckin’ go\\
+	Rawr
+\end{poem}
+
+\subsection{Counter}
+\newcounter{MyFingerInAss}
+\setcounter{MyFingerInAss}{-5}
+Fingers in my ass: \theMyFingerInAss \\
+\addtocounter{MyFingerInAss}{10}
+Fingers in my ass: \theMyFingerInAss
+
+\renewcommand{\theMyFingerInAss}{\Alph{MyFingerInAss}}
+\theMyFingerInAss
+\newcounter{MyCounterii}
+\setcounter{MyCounterii}{\value{MyFingerInAss}}
+\stepcounter{MyCounterii}
+\theMyCounterii
+\newcommand{\decrcounter}[1]{\addtocounter{#1}{-1}}
+\decrcounter{MyCounterii}
+\theMyCounterii\\
+
+\setcounter{MyFingerInAss}{1.5}
+\theMyFingerInAss
+
+\subsection{Length}
+3.5pt plus 1pt minus 2pt\\
+\newlength{\MyLength}
+\setlength{\MyLength}{2\textwidth}
+\addtolength{\MyLength}{-1.5\textwidth}
+\fbox{\parbox{\MyLength}{Some kind of lazy text}}
+\the\MyLength
+\enlargethispage{-4cm}
+% \doublespacing
+\\
+a
+\quad % 1em
+a
+\qquad % 2em
+AAAAAAAAAA
+
+\blindtext[4]\hrulefill\\[2cm]
+\blindtext
+
+\subsection{Condition expressions}
+\ifthenelse{\isodd{\value{page}} \and \value{page}>30}{Odd}{Even}
+
+\subsection{Loops}
+(Using the ifthen package)
+
+\newcounter{money}
+\newcommand{\MoneyCounter}[1]{%
+\setcounter{money}{#1}%
+\whiledo{\value{money}>0}{%
+\$\decrcounter{money}%
+}
+}
+Furry artist salary: \MoneyCounter{10}\\
+My salary: \MoneyCounter{1}
+
+\newcounter{n}
+\newcounter{ne}
+\newcounter{nee}
+\newcounter{neee}
+\newcommand{\fib}[1]{%
+\ifthenelse{#1=0}{\setcounter{neee}{0}}{
+\ifthenelse{#1=1}{\setcounter{neee}{1}}{
+\setcounter{ne}{0}
+\setcounter{nee}{1}
+\setcounter{neee}{1}
+\setcounter{n}{#1}
+\whiledo{\value{n}>1}{
+\addtocounter{neee}{\value{ne}}
+\setcounter{ne}{\value{nee}}
+\setcounter{nee}{\value{neee}}
+\addtocounter{n}{-1}
+}
+}
+}\theneee
+}
+\fib{4}
+
+\end{document}
